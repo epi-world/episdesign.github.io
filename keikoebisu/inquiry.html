@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="サイト説明文が入ります" />
+<meta name="keywords" content="キーワード1,キーワード2,キーワード3" />
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=1020" />
+<link rel="shortcut icon" href="images/favicon.ico">
+<title>テンプレート</title>
+<link href="css/reset.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" src="js/import.js"></script>
+</head>
+<body>
+<div id="wrapper"> <a name="top" id="top"></a> 
+  
+  <!--↓ここからheader -->
+  <header id="header">
+    <div id="header_box2">
+      <div id="header_left">
+        <h1>トラットリア・ゼロ｜東京・池袋のイタリアンレストラン</h1>
+        <p id="logo"> <a href="index.html"> <img src="images/logo.png" alt="トラットリアゼロのロゴ画像" /> </a> </p>
+      </div>
+      <div id="header_right">
+        <ul id="header_btn">
+          <li><a href="inquiry.html">オンライン予約</a></li>
+          <li><a href="inquiry.html">お問い合わせ</a></li>
+        </ul>
+        <p id="tel">&nbsp;03-6759-8986</p>
+      </div>
+    </div>
+    <ul id="gnavi">
+      <li><strong><a href="index.html">Home<br>
+        ホーム</a></strong></li>
+      <li><a href="intro.html">Menu1<br>
+        メニュー1</a></li>
+      <li><a href="menu.html">Menu2<br>
+        メニュー2</a></li>
+      <li><a href="qa.html">Menu3<br>
+        メニュー3</a></li>
+      <li><a href="access.html">Menu4<br>
+        メニュー4</a></li>
+    </ul>
+  </header>
+  <!--↑ここまでheader --> 
+  
+  <!--↓ここからcontents -->
+  <div id="page_ttl">
+    <p>Inquiry</p>
+  </div>
+  <div id="container"> 
+    
+    <!--↓ここから左カラム -->
+    <aside id="side">
+      <p class="side_bnr"> <a href="#"> <img src="images/side_bnr_1.jpg" alt=""/> </a> </p>
+      <p class="side_bnr"> <a href="#"> <img src="images/side_bnr_2.jpg" alt=""/> </a> </p>
+      <p class="side_bnr"> <a href="#"> <img src="images/side_bnr_3.jpg" alt=""/><br>
+        </a> </p>
+      <p class="side_bnr"> <a href="#"> <img src="images/side_bnr_fb.png" alt="こだわりのシチリアワイン"/> </a> </p>
+      <p class="side_bnr"> <a href="#"> <img src="images/side_bnr_ig.png" alt="こだわりのシチリアワイン"/> </a> </p>
+      <p class="side_bnr"> <a href="#"> <img src="images/side_bnr_tw.png" alt="こだわりのシチリアワイン"/> </a> </p>
+      <h2>メニュー</h2>
+      <ul>
+        <li class="side_list"><a href="intro.html">コンセプト</a></li>
+        <li class="side_list"><a href="menu.html">メニュー</a></li>
+        <li class="side_list"><a href="qa.html">よくあるご質問</a></li>
+        <li class="side_list"><a href="access.html">アクセス</a></li>
+      </ul>
+      <div>
+        <p class="side_info">&emsp; <img src="images/logo.png" alt="見出し"> </p>
+        <div class="s_box">
+          <p> <img src="images/img_info.jpg" alt="外観風景"/> </p>
+          <p>〒170-0013<br>
+            東京都豊島区東池袋1-35-3 池袋センタービル2F<br>
+            TEL：03-6759-8986<br>
+            営業時間:17:00~24:00<br>
+            &emsp;&emsp;&emsp;&emsp;&emsp;(LO.23:00)<br>
+            休業日：火曜日 </p>
+        </div>
+      </div>
+    </aside>
+    
+    <!--↓ここから右カラム -->
+    <main id="main">
+      <h2 class="inquiry_ttl">ご予約・お問い合わせ</h2>
+      <div class="inquiry_form">
+        <form action="confirmation.php" method="post" name="myform" margin-top="60px">
+          <table width="100%">
+            <tr>
+              <td>お名前</td>
+              <td ><input type="text" name="name" /></td>
+            </tr>
+            <tr>
+              <td>フリガナ</td>
+              <td ><input type="text" name="furigana" /></td>
+            </tr>
+            <tr>
+              <td>メールアドレス</td>
+              <td ><input type="text" name="address" /></td>
+            </tr>
+            <tr>
+              <td>電話番号</td>
+              <td ><input type="text" name="tel" /></td>
+            </tr>
+            <tr>
+              <td>お問い合わせ内容</td>
+              <td ><textarea name="otoiawase"></textarea></td>
+            </tr>
+          </table>
+          <input type="button" value="確認画面へ" onclick="check_contactform()" />
+        </form>
+      </div>
+      <div class="inquiry_txt">ご予約、お問い合わせは上部のフォームに必要事項をご記入して送信してください。</div>
+      <div class="inquiry_img"><img src="images/img10.png" alt="テーブルとワイン"></div>
+    </main>
+  </div>
+  <!--↑ここまでcontents --> 
+  
+  <!--↓ここからfooter -->
+  <footer>
+    <div id="footer_top">
+      <ul>
+        <li>｜<a href="index.html">ホーム</a></li>
+        <li>｜<a href="intro.html">コンセプト</a></li>
+        <li>｜<a href="menu.html">メニュー</a></li>
+        <li>｜<a href="qa.html">よくあるご質問</a></li>
+        <li>｜<a href="access.html">アクセス</a></li>
+        <li>｜<a href="inquiry.html">オンライン予約</a></li>
+        <li>｜<a href="inquiry.html">お問い合せ</a>｜</li>
+      </ul>
+      <p> <a href="#top"> <img src="images/pagetop.png" alt="ページの上部へ" /> </a> </p>
+    </div>
+    <div id="footer_bottom">
+      <div id="footer_bottom_box">
+        <address>
+        テキストテキスト<br>
+        〒170-0013<br>
+        東京都豊島区東池袋1-35-3 池袋センタービル2F<br>
+        TEL：03-6759-8986
+        </address>
+        <p class="copy">Copyright &copy; トラットリア・ゼロ All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+  <!--↑ここまでfooter --> 
+</div>
+</body>
+</html>
