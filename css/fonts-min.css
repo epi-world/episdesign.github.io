@@ -1,0 +1,27 @@
+/*
+Copyright (c) 2008, Yahoo! Inc. All rights reserved.
+Code licensed under the BSD License:
+http://developer.yahoo.net/yui/license.txt
+version: 2.6.0
+@mixin font_10 { font-size: 77%; }
+@mixin font_11 { font-size: 85%; }
+@mixin font_12 { font-size: 93%; }
+@mixin font_13 { font-size: 100%; }
+@mixin font_14 { font-size: 108%; }
+@mixin font_15 { font-size: 116%; }
+@mixin font_16 { font-size: 123.1%; }
+@mixin font_17 { font-size: 131%; }
+@mixin font_18 { font-size: 138.5%; }
+@mixin font_19 { font-size: 146.5%; }
+@mixin font_20 { font-size: 153.9%; }
+@mixin font_21 { font-size: 161.6%; }
+@mixin font_22 { font-size: 167%; }
+@mixin font_23 { font-size: 174%; }
+@mixin font_24 { font-size: 182%; }
+@mixin font_25 { font-size: 189%; }
+@mixin font_26 { font-size: 197%; }
+*/
+body{font:13px/1.231 arial,helvetica,clean,sans-serif;*font-size:small;*font:x-small;}
+select,input,button,textarea{font:99% arial,helvetica,clean,sans-serif;}
+table{font-size:inherit;font:100%;}
+pre,code,kbd,samp,tt{font-family:monospace;*font-size:108%;line-height:100%;}
