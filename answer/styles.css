@@ -27,17 +27,19 @@ main { width: min(100%, var(--max)); margin: 0 auto; padding: 0 5vw; }
 /* 各章（左右分割＋右がギャラリー） */
 .chapter {
   position: relative;
-  min-height: 120vh;   /* ← 被りを防止するため少し短く */
-  z-index: 1;          /* ← テキストが下に潜らないように */
+  min-height: 130vh;    /* ← 高さ調整で被り防止 */
+  z-index: 1;
 }
 .sticky {
-  position: sticky; top: 12vh;
+  position: sticky; top: 14vh;
   display: grid; grid-template-columns: 1fr 1.3fr;
   gap: clamp(16px, 4vw, 48px); align-items: start;
 }
 
-/* 左側テキスト：背景ぼかしを追加 */
+/* 左側テキスト */
 .left {
+  position: relative;
+  z-index: 2; /* テキストを前面に */
   background: rgba(255,255,255,0.6);
   backdrop-filter: blur(4px);
   padding: 1rem;
@@ -50,10 +52,12 @@ main { width: min(100%, var(--max)); margin: 0 auto; padding: 0 5vw; }
 /* ギャラリー本体 */
 .gallery {
   position: relative;
+  z-index: 1; /* 背面へ */
   width: 100%;
   aspect-ratio: 3 / 4;
-  min-height: 70vh;            /* Safariの描画安定用 */
-  contain: layout paint size;  /* 再描画の境界明示 */
+  min-height: 70vh;
+  contain: layout paint size;
+  margin-top: 6vh; /* ← 章タイトルの余白を確保 */
 }
 
 .gallery .panel {
@@ -83,30 +87,11 @@ main { width: min(100%, var(--max)); margin: 0 auto; padding: 0 5vw; }
 /* モバイル最適化 */
 @media (max-width: 900px) {
   .sticky { grid-template-columns: 1fr; }
-  .gallery { aspect-ratio: 4 / 5; }
-  .left { padding: .8rem; }
+  .gallery { aspect-ratio: 4 / 5; margin-top: 8vh; }
+  .left { background: rgba(255,255,255,.7); backdrop-filter: blur(4px); border-radius: 8px; padding: .9rem; }
 }
 
 /* 動作を減らす設定を尊重 */
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
-}
-
-/* ---- visibility fix for titles ---- */
-
-/* 左カラムを前面に。画像は背面に。 */
-.left { position: relative; z-index: 2; }
-.gallery { position: relative; z-index: 1; }
-
-/* タイトルのための余白を確保（画像がピッタリ重ならないように） */
-.gallery { margin-top: 6vh; }
-
-/* 章の高さと貼り付き位置を微調整して被りを減らす */
-.chapter { min-height: 130vh; }
-.sticky { top: 14vh; }
-
-/* モバイルはさらに読みやすく */
-@media (max-width: 900px){
-  .gallery { margin-top: 8vh; }
-  .left { background: rgba(255,255,255,.7); backdrop-filter: blur(4px); border-radius: 8px; padding: .9rem; }
 }
