@@ -1,0 +1,33 @@
+body {
+  font-family: -apple-system, "Noto Sans JP", sans-serif;
+  background: #fff;
+  color: #111;
+  margin: 0;
+  padding: 0;
+}
+.hero {
+  min-height: 80vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  text-align: center;
+}
+.heroTitle {
+  font-size: clamp(28px, 6vw, 64px);
+  line-height: 1.2;
+}
+.chapter {
+  padding: 10vh 5vw;
+  text-align: left;
+}
+.right img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-top: 2rem;
+}
+.foot {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+}
