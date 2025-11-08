@@ -1,62 +1,30 @@
-<!doctype html>
-<html lang="ja">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Answer Series | epis design</title>
-  <meta name="description" content="Answerシリーズ特設。2作品をモバイル最適で展示。">
-  <link rel="stylesheet" href="./styles.css" />
-  <!-- ビルド不要CDN -->
-  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.39/bundled/lenis.min.js"></script>
-  <script defer src="./main.js"></script>
-</head>
-<body>
-  <header class="siteHead">
-    <div class="brand">epis design</div>
-    <nav class="nav"><a href="#works">Works</a></nav>
-  </header>
+<!-- HEROはそのまま。下の章を追加/置換 -->
+<section class="chapter" id="work-apple">
+  <div class="sticky">
+    <div class="left">
+      <h2 class="ttl">WORK 01 — 約束のりんご</h2>
+      <p class="meta">2025 / A3 / Pigment Ink</p>
+      <p class="line">静かな答えは、はじまりの赤。</p>
+    </div>
+    <div class="right gallery">
+      <!-- スクロールで順にフェード切替 -->
+      <img class="panel" src="./images/Answer1.webp" alt="りんごの女の子 1">
+      <img class="panel" src="./images/Answer1_detail1.webp" alt="りんごの女の子 ディテール1">
+      <img class="panel" src="./images/Answer1_detail2.webp" alt="りんごの女の子 ディテール2">
+    </div>
+  </div>
+</section>
 
-  <main>
-    <!-- HERO -->
-    <section class="hero">
-      <h1 class="heroTitle">Answer Series</h1>
-      <p class="heroLead">設計図みたいな詩と、果実の記憶。いまは2作、ここから増える。</p>
-    </section>
-
-    <!-- WORKS -->
-    <section id="works" class="works">
-      <!-- WORK 01 -->
-      <article class="card">
-        <div class="cardTxt">
-          <h2 class="ttl">WORK 01 — 約束のりんご</h2>
-          <p class="meta">2025 / A3 / Pigment Ink</p>
-          <p class="line">静かな答えは、はじまりの赤。</p>
-        </div>
-        <figure class="cardImg">
-          <!-- 画像は answer/images に置く想定。ファイル名は要差し替え -->
-          <img src="./images/Answer1.webp" alt="約束のりんご" loading="lazy">
-        </figure>
-      </article>
-
-      <!-- WORK 02 -->
-      <article class="card">
-        <div class="cardTxt">
-          <h2 class="ttl">WORK 02 — 思い出のさくらんぼ</h2>
-          <p class="meta">2025 / A3 / Pigment Ink</p>
-          <p class="line">甘く短い余韻、唇に残る記憶。</p>
-        </div>
-        <figure class="cardImg">
-          <!-- さっき上げた Answer2.webp を参照 -->
-          <img src="./images/Answer2.webp" alt="思い出のさくらんぼ" loading="lazy">
-        </figure>
-      </article>
-    </section>
-
-    <footer class="foot">
-      <small>© epis atelier</small>
-    </footer>
-  </main>
-</body>
-</html>
+<section class="chapter" id="work-cherry">
+  <div class="sticky">
+    <div class="left">
+      <h2 class="ttl">WORK 02 — 思い出のさくらんぼ</h2>
+      <p class="meta">2025 / A3 / Pigment Ink</p>
+      <p class="line">甘く短い余韻、唇に残る記憶。</p>
+    </div>
+    <div class="right gallery">
+      <img class="panel" src="./images/Answer2.webp" alt="さくらんぼの女の子 1">
+      <img class="panel" src="./images/Answer2_detail1.webp" alt="さくらんぼの女の子 ディテール1">
+    </div>
+  </div>
+</section>
