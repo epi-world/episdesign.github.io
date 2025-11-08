@@ -25,11 +25,23 @@ main { width: min(100%, var(--max)); margin: 0 auto; padding: 0 5vw; }
 .heroLead { margin: 0; color:#555; }
 
 /* 各章（左右分割＋右がギャラリー） */
-.chapter { position: relative; min-height: 180vh; }
+.chapter {
+  position: relative;
+  min-height: 120vh;   /* ← 被りを防止するため少し短く */
+  z-index: 1;          /* ← テキストが下に潜らないように */
+}
 .sticky {
   position: sticky; top: 12vh;
   display: grid; grid-template-columns: 1fr 1.3fr;
   gap: clamp(16px, 4vw, 48px); align-items: start;
+}
+
+/* 左側テキスト：背景ぼかしを追加 */
+.left {
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(4px);
+  padding: 1rem;
+  border-radius: 8px;
 }
 .left .ttl { margin: 0 0 .4rem; letter-spacing: .06em; }
 .left .meta { margin: .2rem 0 1.2rem; color:#666; }
@@ -72,6 +84,7 @@ main { width: min(100%, var(--max)); margin: 0 auto; padding: 0 5vw; }
 @media (max-width: 900px) {
   .sticky { grid-template-columns: 1fr; }
   .gallery { aspect-ratio: 4 / 5; }
+  .left { padding: .8rem; }
 }
 
 /* 動作を減らす設定を尊重 */
