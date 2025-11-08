@@ -59,3 +59,9 @@ main { width: min(100%, var(--max)); margin: 0 auto; padding: 0 5vw; }
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
+
+/* DEBUG: 最初の1枚は必ず見せる。JSが死んでても出るはず。 */
+.gallery .panel:first-child { 
+  opacity: 1 !important; 
+  transform: none !important; 
+}
