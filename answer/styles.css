@@ -1,30 +1,27 @@
-:root { --max: 1120px; }
-* { box-sizing: border-box; }
-html, body { margin:0; padding:0; }
-body { font-family: -apple-system, system-ui, "Noto Sans JP", sans-serif; color:#111; background:#fff; }
-
-.siteHead { position: sticky; top: 0; backdrop-filter: blur(6px); background: rgba(255,255,255,.6); border-bottom:1px solid #eee; z-index:10; display:flex; justify-content:space-between; align-items:center; padding: 10px 5vw; }
-.brand { font-weight:700; letter-spacing:.04em; }
-.nav a { color:#111; text-decoration:none; opacity:.8; }
-
-main { width:min(100%, var(--max)); margin: 0 auto; padding: 0 5vw; }
-.hero { padding: 12vh 0 6vh; }
-.heroTitle { font-size: clamp(32px, 7vw, 72px); margin: 0 0 .5rem; line-height:1.1; }
-.heroLead { margin: 0; color:#555; }
-
-.works { display: grid; gap: clamp(20px, 4vw, 40px); padding: 4vh 0 8vh; }
-.card { display:grid; grid-template-columns: 1.2fr 1.8fr; gap: clamp(16px, 3vw, 40px); align-items: center; }
-.card:nth-child(even) { grid-template-columns: 1.8fr 1.2fr; }
-.cardTxt .ttl { margin:0 0 .4rem; letter-spacing:.06em; }
-.meta { margin:.2rem 0 .8rem; color:#666; font-size:.95rem; }
-.line { margin:0; line-height:1.9; letter-spacing:.03em; }
-.cardImg img { width:100%; height:auto; display:block; border-radius:8px; box-shadow: 0 6px 24px rgba(0,0,0,.06); }
-
-.foot { padding: 36px 0 56px; text-align:center; color:#666; font-size:.9rem; }
-
-@media (max-width: 900px) {
-  .card, .card:nth-child(even) { grid-template-columns: 1fr; }
+/* 章レイアウト（左右分割を固定して中だけ動かす） */
+.chapter { position: relative; min-height: 180vh; }
+.sticky {
+  position: sticky; top: 12vh;
+  display: grid; grid-template-columns: 1fr 1.3fr; gap: clamp(16px, 4vw, 48px);
+  align-items: start;
 }
-@media (prefers-reduced-motion: reduce) {
-  * { animation:none !important; transition:none !important; scroll-behavior:auto !important; }
+.left .ttl { margin: 0 0 .4rem; letter-spacing: .06em; }
+.left .meta { margin: .2rem 0 1.2rem; color:#666; }
+.left .line { margin: 0 0 .8rem; line-height: 1.9; letter-spacing: .03em; }
+
+/* 右側ギャラリーは重ねてフェード切替 */
+.gallery { position: relative; width: 100%; aspect-ratio: 3 / 4; }
+.gallery .panel {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,.08);
+  opacity: 0; transform: scale(1.02);
 }
+.gallery .panel.is-active { opacity: 1; transform: scale(1); transition: opacity .6s ease, transform .6s ease; }
+
+/* ヒーローのパララックス感を少しだけ */
+.hero { padding: 14vh 0 8vh; }
+.heroTitle { will-change: transform; }
+
+/* モバイル最適化 */
+@media (max-width: 900px) { .sticky { grid-template-columns: 1fr; } .gallery { aspect-ratio: 4 / 5; } }
+@media (prefers-reduced-motion: reduce) { * { animation:none !important; transition:none !important; } }
