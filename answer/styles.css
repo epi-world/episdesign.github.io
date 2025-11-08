@@ -24,7 +24,7 @@ main { width: min(100%, var(--max)); margin: 0 auto; padding: 0 5vw; }
 .heroTitle { font-size: clamp(32px, 7vw, 72px); margin: 0 0 .5rem; line-height: 1.1; }
 .heroLead { margin: 0; color:#555; }
 
-/* 章（左右分割＋右がギャラリー） */
+/* 各章（左右分割＋右がギャラリー） */
 .chapter { position: relative; min-height: 180vh; }
 .sticky {
   position: sticky; top: 12vh;
@@ -35,15 +35,34 @@ main { width: min(100%, var(--max)); margin: 0 auto; padding: 0 5vw; }
 .left .meta { margin: .2rem 0 1.2rem; color:#666; }
 .left .line { margin: 0 0 1rem; line-height: 1.9; letter-spacing: .03em; }
 
-/* 右側ギャラリーは重ねてフェード切替 */
+/* ギャラリー本体 */
+.gallery {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  min-height: 70vh;            /* Safariの描画安定用 */
+  contain: layout paint size;  /* 再描画の境界明示 */
+}
+
 .gallery .panel {
-  position: absolute; inset: 0; width: 100%; height: 100%;
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
   object-fit: cover;
   border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,.08);
-  opacity: 0; transform: scale(1.02);
+
+  /* 初期は透明＋軽く拡大。GPUで描画 */
+  opacity: 0;
+  transform: translateZ(0) scale(1.02);
+  -webkit-transform: translateZ(0) scale(1.02);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   will-change: opacity, transform;
-  backface-visibility: hidden;  /* ← iOSバグ対策 */
-  transform: translateZ(0);      /* ← GPU強制レンダリング */
+}
+
+.gallery .panel.is-active {
+  opacity: 1;
+  transform: translateZ(0) scale(1);
+  transition: opacity .6s ease, transform .6s ease;
 }
 
 /* フッタ */
@@ -55,16 +74,7 @@ main { width: min(100%, var(--max)); margin: 0 auto; padding: 0 5vw; }
   .gallery { aspect-ratio: 4 / 5; }
 }
 
-/* 動作を減らす設定の尊重 */
+/* 動作を減らす設定を尊重 */
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
-
-/* DEBUG: 最初の1枚は必ず見せる。JSが死んでても出るはず。 */
-.gallery .panel:first-child { 
-  opacity: 1 !important; 
-  transform: none !important; 
-}
-
-/* KILL SWITCH: 画像を問答無用で見せる（原因切り分け用） */
-.gallery .panel { opacity: 1 !important; transform: none !important; }
