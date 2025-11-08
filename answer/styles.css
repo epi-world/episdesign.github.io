@@ -65,3 +65,6 @@ main { width: min(100%, var(--max)); margin: 0 auto; padding: 0 5vw; }
   opacity: 1 !important; 
   transform: none !important; 
 }
+
+/* KILL SWITCH: 画像を問答無用で見せる（原因切り分け用） */
+.gallery .panel { opacity: 1 !important; transform: none !important; }
