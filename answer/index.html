@@ -1,25 +1,62 @@
-<!doctype html><html lang="ja"><head>
-<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Answer Series | epis atelier</title>
-<link rel="stylesheet" href="./styles.css"/>
-<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.39/bundled/lenis.min.js"></script>
-<script defer src="./main.js"></script>
-</head><body>
-<main>
-<section class="hero"><h1 class="heroTitle">Answer Series<br>設計図みたいな詩と、果実の記憶。</h1></section>
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Answer Series | epis design</title>
+  <meta name="description" content="Answerシリーズ特設。2作品をモバイル最適で展示。">
+  <link rel="stylesheet" href="./styles.css" />
+  <!-- ビルド不要CDN -->
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.39/bundled/lenis.min.js"></script>
+  <script defer src="./main.js"></script>
+</head>
+<body>
+  <header class="siteHead">
+    <div class="brand">epis design</div>
+    <nav class="nav"><a href="#works">Works</a></nav>
+  </header>
 
-<section class="chapter"><div class="sticky">
-<h2 class="title">WORK 01 — 約束のりんご</h2>
-<div class="left">
-  <p class="line">静かな答えは、はじまりの赤。</p>
-  <p class="line">2025 / A3 / Pigment Ink</p>
-</div>
-<div class="right">
-  <img src="./images/Answer1.webp" alt="約束のりんご">
-</div>
-</div></section>
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <h1 class="heroTitle">Answer Series</h1>
+      <p class="heroLead">設計図みたいな詩と、果実の記憶。いまは2作、ここから増える。</p>
+    </section>
 
-<footer class="foot"><small>© epis atelier</small></footer>
-</main></body></html>
+    <!-- WORKS -->
+    <section id="works" class="works">
+      <!-- WORK 01 -->
+      <article class="card">
+        <div class="cardTxt">
+          <h2 class="ttl">WORK 01 — りんごの女の子</h2>
+          <p class="meta">2025 / A3 / Pigment Ink</p>
+          <p class="line">静かな答えは、はじまりの赤。</p>
+        </div>
+        <figure class="cardImg">
+          <!-- 画像は answer/images に置く想定。ファイル名は要差し替え -->
+          <img src="./answer/images/Answer1.webp" alt="りんごの女の子" loading="lazy">
+        </figure>
+      </article>
+
+      <!-- WORK 02 -->
+      <article class="card">
+        <div class="cardTxt">
+          <h2 class="ttl">WORK 02 — さくらんぼの女の子</h2>
+          <p class="meta">2025 / A3 / Pigment Ink</p>
+          <p class="line">甘く短い余韻、唇に残る記憶。</p>
+        </div>
+        <figure class="cardImg">
+          <!-- さっき上げた Answer2.webp を参照 -->
+          <img src="./answer/images/Answer2.webp" alt="さくらんぼの女の子" loading="lazy">
+        </figure>
+      </article>
+    </section>
+
+    <footer class="foot">
+      <small>© epis atelier</small>
+    </footer>
+  </main>
+</body>
+</html>
