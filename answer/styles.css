@@ -91,3 +91,22 @@ main { width: min(100%, var(--max)); margin: 0 auto; padding: 0 5vw; }
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
+
+/* ---- visibility fix for titles ---- */
+
+/* 左カラムを前面に。画像は背面に。 */
+.left { position: relative; z-index: 2; }
+.gallery { position: relative; z-index: 1; }
+
+/* タイトルのための余白を確保（画像がピッタリ重ならないように） */
+.gallery { margin-top: 6vh; }
+
+/* 章の高さと貼り付き位置を微調整して被りを減らす */
+.chapter { min-height: 130vh; }
+.sticky { top: 14vh; }
+
+/* モバイルはさらに読みやすく */
+@media (max-width: 900px){
+  .gallery { margin-top: 8vh; }
+  .left { background: rgba(255,255,255,.7); backdrop-filter: blur(4px); border-radius: 8px; padding: .9rem; }
+}
