@@ -7,97 +7,95 @@ body {
   overflow-x: hidden;
 }
 
-/* ── Header ─────────────────────────────────────────────── */
+/* Header */
 .siteHead {
   position: sticky; top: 0; z-index: 100;
   display: flex; justify-content: space-between; align-items: center;
   padding: 10px 5vw;
+  background: rgba(255,255,255,.8);
   backdrop-filter: blur(6px);
-  background: rgba(255,255,255,.7);
   border-bottom: 1px solid #eee;
 }
 .brand { font-weight: 700; letter-spacing: .04em; }
 .nav a { color: #111; text-decoration: none; opacity: .85; }
 
-/* ── Base ───────────────────────────────────────────────── */
+/* Base */
 main { width: min(100%, var(--max)); margin: 0 auto; padding: 0 5vw; }
 .hero { padding: 12vh 0 6vh; }
 .heroTitle { font-size: clamp(32px, 7vw, 72px); margin: 0 0 .5rem; line-height: 1.1; }
 .heroLead { margin: 0; color:#555; }
 
-/* ── Section (text + gallery) ───────────────────────────── */
+/* Section */
 .chapter{
   position: relative;
-  isolation: isolate;          /* ← 章ごとに積層を独立させる（Safari安定） */
-  min-height: 130vh;
+  isolation: isolate;      /* 章ごとに積層独立 */
+  min-height: 120vh;
   z-index: 0;
 }
 .sticky{
-  position: sticky; top: 12vh; z-index: 10; /* ← テキスト側の親を前面に */
+  position: sticky; top: 12vh; z-index: 10;
   display: grid; grid-template-columns: 1fr 1.3fr;
   gap: clamp(16px,4vw,48px); align-items: start;
 }
 
-/* 左テキスト：常に読める仕様（前面＋白背景＋ぼかし） */
+/* Left text（読みやすさは残しつつ、背景は薄く） */
 .left{
-  position: relative; z-index: 20;          /* ← 絶対に最前面 */
-  background: rgba(255,255,255,0.82);
-  backdrop-filter: blur(6px);
+  position: relative; z-index: 20;
+  background: rgba(255,255,255,0.55);   /* うっすら白。嫌なら0に下げてOK */
+  backdrop-filter: blur(4px);
   padding: 1rem 1.2rem; border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0,0,0,.04);
 }
 .left .ttl{ margin:0 0 .4rem; letter-spacing:.06em; font-weight:600; }
 .left .meta{ margin:.2rem 0 1rem; color:#666; }
 .left .line{ margin:0 0 1rem; line-height:1.8; letter-spacing:.03em; }
 
-/* 右ギャラリー：画像は背面。テキストの領域と重ならない工夫を追加。 */
+/* Gallery */
 .gallery{
-  position: relative; z-index: 1;       /* ← 背面側へ */
+  position: relative; z-index: 1;
   width: 100%;
   aspect-ratio: 3 / 4;
   min-height: 70vh;
-  margin-top: 8vh;                      /* ← テキストのための余白 */
+  margin-top: 6vh;                 /* タイトルと重なりにくくする余白 */
   contain: layout paint size;
-  pointer-events: none;                 /* ← タップで前面化されるのを防止 */
+  /* Safariの怪しい前面化を招くので禁止していた pointer-events: none は撤去 */
 }
 
-/* ギャラリー上部に“白グラデ”の幕を敷いて、文字が必ず読めるようにする */
-.gallery::before{
-  content:"";
-  position:absolute; left:0; right:0; top:0; height:22vh;
-  background: linear-gradient(to bottom, rgba(255,255,255,.95), rgba(255,255,255,0));
-  z-index: 2; pointer-events:none;
-  border-top-left-radius:10px; border-top-right-radius:10px;
-}
-
-/* 枚重ね画像（背面） */
+/* 画像パネル：JSが死んでても1枚目は必ず見える設計にする */
 .gallery .panel{
   position: absolute; inset: 0;
   width: 100%; height: 100%;
   object-fit: cover;
   border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,.08);
-  opacity: 0;
-  transform: translateZ(0) scale(1.02);
-  transition: opacity .6s ease, transform .6s ease;
+
+  /* デフォルトで“見える”。2枚目以降だけ隠す。 */
+  opacity: 1;
+  transform: translateZ(0);
   backface-visibility: hidden; -webkit-backface-visibility: hidden;
   will-change: opacity, transform;
-  z-index: 1; /* 幕より下、テキストより下 */
 }
-.gallery .panel.is-active{
-  opacity: 1; transform: translateZ(0) scale(1);
+/* 1枚目以外は隠す（JSが動けば .is-active が上書き表示される） */
+.gallery .panel:not(:first-child){
+  opacity: 0;
 }
 
-/* ── Footer ─────────────────────────────────────────────── */
+/* アニメ時は .is-active を表示する（JSが付ける想定） */
+.gallery .panel.is-active{
+  opacity: 1;
+  transform: translateZ(0);
+  transition: opacity .6s ease, transform .6s ease;
+}
+
+/* Footer */
 .foot{ padding:36px 0 56px; text-align:center; color:#666; font-size:.9rem; }
 
-/* ── Mobile ─────────────────────────────────────────────── */
+/* Mobile */
 @media (max-width: 900px){
   .sticky{ grid-template-columns: 1fr; top: 10vh; }
-  .gallery{ aspect-ratio: 4 / 5; margin-top: 10vh; }
-  .left{ background: rgba(255,255,255,.88); padding: .9rem; }
+  .gallery{ aspect-ratio: 4 / 5; margin-top: 8vh; }
+  .left{ background: rgba(255,255,255,0.65); padding: .9rem; }
 }
 
-/* ── Reduced Motion ─────────────────────────────────────── */
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce){
   *{ animation:none !important; transition:none !important; scroll-behavior:auto !important; }
 }
