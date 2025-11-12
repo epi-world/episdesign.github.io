@@ -1,10 +1,9 @@
-// 超軽量フィルタとライトボックス。依存なし。
 document.addEventListener('DOMContentLoaded', () => {
   const pills = document.querySelectorAll('.pill');
   const cards = [...document.querySelectorAll('.card')];
   const grid  = document.querySelector('.grid');
 
-  // 初期: URLの ?tag=xxx を読んで反映
+  // 初期: URLの ?tag=xxx を反映
   const params = new URLSearchParams(location.search);
   const initial = params.get('tag') || '*';
   activate(initial);
@@ -12,7 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
   pills.forEach(p => {
     p.addEventListener('click', () => {
       const tag = p.dataset.filter;
-      // URLを更新（履歴に優しい）
       const sp = new URLSearchParams(location.search);
       tag === '*' ? sp.delete('tag') : sp.set('tag', tag);
       history.replaceState({}, '', `${location.pathname}${sp.toString() ? '?' + sp.toString() : ''}`);
@@ -22,18 +20,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function activate(tag){
     pills.forEach(x => x.classList.toggle('is-active', x.dataset.filter === tag));
-    // フィルタ処理
     cards.forEach(card => {
       const tags = (card.dataset.tags || '').split(/\s+/);
       const show = (tag === '*') || tags.includes(tag);
       toggle(card, show);
     });
-    // スクロール位置を少し戻して“切り替わった感”
     grid.scrollIntoView({ behavior:'smooth', block:'start' });
   }
 
   function toggle(el, show){
-    // アニメっぽい見え方を維持しつつ hidden でアクセシビリティ配慮
     if (show) {
       el.hidden = false;
       requestAnimationFrame(() => { el.style.opacity = '1'; el.style.transform = 'scale(1)'; el.style.visibility = 'visible'; });
@@ -41,12 +36,11 @@ document.addEventListener('DOMContentLoaded', () => {
       el.style.opacity = '0';
       el.style.transform = 'scale(.98)';
       el.style.visibility = 'hidden';
-      // 遅延で hidden を付けるとフォーカスが飛ばない
       setTimeout(() => { el.hidden = true; }, 180);
     }
   }
 
-  // ライトボックス（クリック or キーボードで開く）
+  // ライトボックス
   const dlg = document.getElementById('lightbox');
   const lbImg = dlg.querySelector('.lb-img');
   const lbTtl = dlg.querySelector('.lb-ttl');
@@ -69,10 +63,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   btnClose.addEventListener('click', () => dlg.close());
   dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
-});
 
-// main.js の最後に追加
-document.getElementById('modeToggle').addEventListener('click', ()=>{
-  document.body.classList.toggle('dark');
+  // ギャラリーモード（暗転）任意
+  const modeBtn = document.getElementById('modeToggle');
+  if (modeBtn){
+    modeBtn.addEventListener('click', () => {
+      const on = document.body.classList.toggle('dark');
+      modeBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+  }
 });
-
