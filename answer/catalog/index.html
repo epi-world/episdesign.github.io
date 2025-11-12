@@ -24,35 +24,30 @@
 
     <!-- グリッド -->
     <section class="grid" aria-live="polite">
-      <!-- カード例: data-tags にタグ（空白区切り） -->
       <article class="card" data-tags="apple limited" tabindex="0">
         <div class="badge">準備中</div>
         <figure class="thumb">
           <img src="../images/Answer1.webp" alt="Answer: Apple" loading="lazy" />
         </figure>
         <header class="meta">
-          <h3 class="ttl">Apple of Promise</h3>
-          <p class="sub">A3 / Graphic art, Photoshop</p>
+          <h3 class="ttl">Apple Girl</h3>
+          <p class="sub">A3 / Pigment Ink</p>
         </header>
       </article>
 
       <article class="card" data-tags="cherry">
-        <div class="badge">準備中</div>
         <figure class="thumb">
           <img src="../images/Answer2.webp" alt="Answer: Cherry" loading="lazy" />
         </figure>
         <header class="meta">
-          <h3 class="ttl">Cherry of Memory</h3>
-          <p class="sub">A3 / Graphic art, Photoshop</p>
+          <h3 class="ttl">Cherry Girl</h3>
+          <p class="sub">A3 / Pigment Ink</p>
         </header>
       </article>
-
-      <!-- ★作品を増やす時は、この <article class="card"> をコピペして data-tags と画像を変えるだけ -->
     </section>
 
-    <!-- クリックで拡大（モーダル） -->
+    <!-- Lightbox（※ここは1個だけ。open属性は付けない） -->
     <dialog class="lightbox" id="lightbox">
-      <button id="modeToggle" class="mode-btn">ギャラリーモード</button>
       <button class="close" aria-label="閉じる">×</button>
       <img class="lb-img" alt="" />
       <div class="lb-cap">
@@ -64,10 +59,11 @@
     <footer class="foot">
       <small>© epis atelier</small>
     </footer>
-    <button id="modeToggle" class="mode-btn">ギャラリーモード</button>
   </main>
 
+  <!-- 展示モードのトグル（任意） -->
+  <button id="modeToggle" class="mode-btn" aria-pressed="false">ギャラリーモード</button>
+
   <script defer src="./main.js"></script>
-  
 </body>
 </html>
