@@ -70,3 +70,9 @@ document.addEventListener('DOMContentLoaded', () => {
   btnClose.addEventListener('click', () => dlg.close());
   dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
 });
+
+// main.js の最後に追加
+document.getElementById('modeToggle').addEventListener('click', ()=>{
+  document.body.classList.toggle('dark');
+});
+
