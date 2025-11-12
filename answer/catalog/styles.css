@@ -79,3 +79,12 @@ main{ width:min(100%, var(--max)); margin:0 auto; padding: 10px clamp(12px,3vw,2
   .filters{ top:50px; }
   .grid{ grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
 }
+.lightbox {
+  width: 100vw; height: 100vh; max-width:none; max-height:none;
+  display:flex; align-items:center; justify-content:center;
+  background: rgba(0,0,0,.95);
+}
+.lb-img {
+  width: auto; height: 90vh; object-fit: contain;
+}
+
