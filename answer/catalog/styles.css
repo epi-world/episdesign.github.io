@@ -88,3 +88,13 @@ main{ width:min(100%, var(--max)); margin:0 auto; padding: 10px clamp(12px,3vw,2
   width: auto; height: 90vh; object-fit: contain;
 }
 
+.badge {
+  position:absolute; top:8px; left:8px;
+  background:rgba(255,255,255,.85);
+  color:#111; font-size:.75rem;
+  padding:.2rem .6rem; border-radius:6px;
+  letter-spacing:.05em; font-weight:600;
+}
+.dark .badge{ background:rgba(0,0,0,.6); color:#fff; }
+
+
