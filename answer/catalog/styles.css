@@ -103,3 +103,26 @@ body.dark{ background:#111; color:#eee; }
   .filters{ top:50px; }
   .grid{ grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
 }
+
+/* === バッジ位置と見え方を微調整 === */
+.badge {
+  position: absolute;
+  top: 10px;           /* ← 画像の中でも少し下に */
+  left: 10px;
+  z-index: 3;          /* ← 画像より前面に */
+  background: rgba(255,255,255,0.9);
+  color: #111;
+  font-size: 0.8rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 8px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  backdrop-filter: blur(3px); /* ← 画像の上で文字がくっきり */
+}
+
+.dark .badge {
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+}
+
