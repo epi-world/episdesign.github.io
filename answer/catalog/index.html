@@ -5,17 +5,6 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Answer Catalog | epis design</title>
   <meta name="description" content="Answerシリーズの全作品。タブで切替、スムーズなグリッド表示。">
-  <article class="card" data-tags="apple limited" tabindex="0">
-  <figure class="thumb">
-    <img src="../images/Answer1.webp" alt="Answer: Apple" loading="lazy" />
-  </figure>
-  <header class="meta">
-    <h3 class="ttl">Apple Girl</h3>
-    <p class="sub">A3 / Pigment Ink</p>
-  </header>
-  <div class="badge">準備中</div>   <!-- ★ここに移動 -->
-</article>
-
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
@@ -35,8 +24,8 @@
 
     <!-- グリッド -->
     <section class="grid" aria-live="polite">
+      <!-- Apple -->
       <article class="card" data-tags="apple limited" tabindex="0">
-        <div class="badge">準備中</div>
         <figure class="thumb">
           <img src="../images/Answer1.webp" alt="Answer: Apple" loading="lazy" />
         </figure>
@@ -44,8 +33,10 @@
           <h3 class="ttl">Apple Girl</h3>
           <p class="sub">A3 / Pigment Ink</p>
         </header>
+        <div class="badge">準備中</div>
       </article>
 
+      <!-- Cherry -->
       <article class="card" data-tags="cherry">
         <figure class="thumb">
           <img src="../images/Answer2.webp" alt="Answer: Cherry" loading="lazy" />
@@ -54,10 +45,11 @@
           <h3 class="ttl">Cherry Girl</h3>
           <p class="sub">A3 / Pigment Ink</p>
         </header>
+        <div class="badge">展示中</div>
       </article>
     </section>
 
-    <!-- Lightbox（※ここは1個だけ。open属性は付けない） -->
+    <!-- Lightbox（1つだけ。open属性は付けない） -->
     <dialog class="lightbox" id="lightbox">
       <button class="close" aria-label="閉じる">×</button>
       <img class="lb-img" alt="" />
@@ -72,7 +64,7 @@
     </footer>
   </main>
 
-  <!-- 展示モードのトグル（任意） -->
+  <!-- ギャラリーモードボタン（任意） -->
   <button id="modeToggle" class="mode-btn" aria-pressed="false">ギャラリーモード</button>
 
   <script defer src="./main.js"></script>
