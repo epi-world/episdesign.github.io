@@ -6,6 +6,7 @@
 html,body{ margin:0; padding:0; }
 body{ font-family:-apple-system,system-ui,"Noto Sans JP",sans-serif; color:#111; background:#fff; }
 
+/* Header */
 .siteHead{
   position:sticky; top:0; z-index:10; display:flex; justify-content:space-between; align-items:center;
   padding:10px clamp(12px,3vw,24px); background:rgba(255,255,255,.7); backdrop-filter:blur(6px); border-bottom:1px solid #eee;
@@ -13,7 +14,8 @@ body{ font-family:-apple-system,system-ui,"Noto Sans JP",sans-serif; color:#111;
 .brand a{ color:#111; text-decoration:none; font-weight:700; letter-spacing:.04em; }
 .nav a{ color:#111; text-decoration:none; opacity:.8; }
 
-main{ width:min(100%, var(--max)); margin:0 auto; padding: 10px clamp(12px,3vw,24px) 56px; }
+/* Base */
+main{ width:min(100%, var(--max)); margin:0 auto; padding: 10px clamp(12px,3vw,24px) 72px; }
 
 /* Filters */
 .filters{
@@ -54,47 +56,50 @@ main{ width:min(100%, var(--max)); margin:0 auto; padding: 10px clamp(12px,3vw,2
 .ttl{ margin:.1rem 0 .2rem; font-size:1.05rem; letter-spacing:.03em; }
 .sub{ margin:0; color:#666; font-size:.9rem; }
 
+/* 在庫・準備中バッジ */
+.badge{
+  position:absolute; top:8px; left:8px;
+  background:rgba(255,255,255,0.88); color:#111;
+  font-size:.75rem; padding:.3rem .7rem; border-radius:6px; font-weight:600; letter-spacing:.05em;
+  pointer-events:none;
+}
+
 /* Show/Hide animation for filtering */
 .card[hidden]{ display:block; opacity:0; visibility:hidden; transform:scale(.98); pointer-events:none; }
 
-/* Lightbox */
+/* Lightbox (全画面) */
+.lightbox:not([open]){ display:none; }   /* ← openが無ければ完全に非表示にする保険 */
 .lightbox{
-  width:min(96vw, 1200px); border:none; padding:0; border-radius:12px; overflow:hidden;
-  box-shadow: 0 20px 80px rgba(0,0,0,.25);
+  width:100vw; height:100vh; max-width:none; max-height:none;
+  display:flex; align-items:center; justify-content:center;
+  background: rgba(0,0,0,.95); border:none; padding:0; margin:0; z-index:9999;
 }
-.lightbox::backdrop{ background: rgba(0,0,0,.45); }
+.lightbox::backdrop{ background: rgba(0,0,0,.9); }
 .lightbox .close{
-  position:absolute; right:8px; top:8px; z-index:3; border:none; background:rgba(255,255,255,.85); width:36px; height:36px;
-  border-radius:50%; font-size:20px; line-height:36px; text-align:center; cursor:pointer;
+  position:absolute; right:12px; top:12px; z-index:3; border:none; background:rgba(255,255,255,.9);
+  width:40px; height:40px; border-radius:50%; font-size:22px; line-height:40px; text-align:center; cursor:pointer;
 }
-.lb-img{ display:block; width:100%; height:auto; }
-.lb-cap{ padding:12px 14px 16px; background:#fff; border-top:1px solid #eee; }
-.lb-ttl{ margin:.2rem 0; font-size:1.05rem; }
-.lb-sub{ margin:0; color:#666; font-size:.9rem; }
+.lb-img{ width:auto; height:90vh; object-fit:contain; border-radius:6px; }
+.lb-cap{
+  position:absolute; bottom:4vh; left:0; right:0; text-align:center; color:#fff; font-size:1rem;
+}
+.lb-ttl{ margin:0; font-weight:600; }
+.lb-sub{ margin:.2rem 0 0; opacity:.8; }
 
-.foot{ margin-top:26px; text-align:center; color:#666; }
+/* ギャラリーモードボタン（任意） */
+.mode-btn{
+  position: fixed; right: 14px; bottom: 14px; z-index: 20;
+  background:#111; color:#fff; border:none; padding:.6rem 1rem; border-radius:999px; opacity:.85; cursor:pointer;
+}
+
+/* Dark mode（任意） */
+body.dark{ background:#111; color:#eee; }
+.dark .card{ background:#222; border-color:#333; }
+.dark .badge{ background:rgba(0,0,0,.65); color:#fff; }
+.dark .siteHead{ background: rgba(20,20,20,.7); }
 
 /* Mobile tweaks */
 @media (max-width: 640px){
   .filters{ top:50px; }
   .grid{ grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
 }
-.lightbox {
-  width: 100vw; height: 100vh; max-width:none; max-height:none;
-  display:flex; align-items:center; justify-content:center;
-  background: rgba(0,0,0,.95);
-}
-.lb-img {
-  width: auto; height: 90vh; object-fit: contain;
-}
-
-.badge {
-  position:absolute; top:8px; left:8px;
-  background:rgba(255,255,255,.85);
-  color:#111; font-size:.75rem;
-  padding:.2rem .6rem; border-radius:6px;
-  letter-spacing:.05em; font-weight:600;
-}
-.dark .badge{ background:rgba(0,0,0,.6); color:#fff; }
-
-
