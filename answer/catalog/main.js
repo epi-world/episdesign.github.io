@@ -25,7 +25,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  /* ---------- Lights toggle ---------- */
+  /* ---------- Lights toggle ----------
+     Lights Off (初期) : 明るいギャラリー
+     Lights On         : 暗くなって作品が浮かぶ
+  ------------------------------------- */
   if (lightsToggle) {
     lightsToggle.addEventListener("click", () => {
       document.body.classList.toggle("dark-mode");
@@ -34,14 +37,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* ---------- Lightbox ---------- */
+  /* ---------- Lightbox (full-screen image) ---------- */
   const imageButtons = document.querySelectorAll(".card-image-button");
 
   imageButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
       const src = btn.dataset.image;
       const alt = btn.getAttribute("aria-label") || "";
-      if (!src) return;
+      if (!src || !lightbox || !lightboxImage) return;
 
       lightboxImage.src = src;
       lightboxImage.alt = alt;
@@ -50,17 +53,24 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   function closeLightbox() {
+    if (!lightbox) return;
     lightbox.classList.remove("is-open");
-    lightboxImage.src = "";
+    if (lightboxImage) {
+      lightboxImage.src = "";
+    }
   }
 
-  lightbox.addEventListener("click", (e) => {
-    if (e.target === lightbox) {
-      closeLightbox();
-    }
-  });
+  if (lightbox) {
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) {
+        closeLightbox();
+      }
+    });
+  }
 
-  lightboxClose.addEventListener("click", closeLightbox);
+  if (lightboxClose) {
+    lightboxClose.addEventListener("click", closeLightbox);
+  }
 
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
