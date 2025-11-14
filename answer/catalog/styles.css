@@ -1,141 +1,389 @@
-/* ======================================
-   全体の展示室・美術館トーン
-====================================== */
+/* =========================================================
+   epis design - Answer Catalog
+   Brand colors are based on epi logo & profile card
+   Light = museum cream / Dark = midnight gallery
+   ========================================================= */
+
+/* ---------- Theme tokens ---------- */
+
+:root {
+  /* brand core */
+  --accent: #6a1414;        /* ボルドー（ロゴの線イメージ） */
+  --accent-soft: #b88a97;   /* ダスティピンク系（サブに少しだけ） */
+
+  /* light (museum) */
+  --bg-color: #f5efe4;      /* クリームの壁 */
+  --text-color: #2b2b2b;    /* 文字メイン：やわらかい黒 */
+  --muted-text: #4a4a4a;    /* サブテキスト */
+  --card-bg: #e5d8c6;       /* 作品カードの背景 */
+  --card-border: rgba(0, 0, 0, 0.04);
+  --shadow-soft: 0 12px 30px rgba(0, 0, 0, 0.08);
+
+  --pill-bg: #ffffff;
+  --pill-text: #2b2b2b;
+  --pill-active-bg: #000000;
+  --pill-active-text: #ffffff;
+
+  --status-prep-bg: #4a4a4a;
+  --status-prep-text: #ffffff;
+  --status-exhibit-bg: #0066ff;
+  --status-exhibit-text: #ffffff;
+
+  --footer-text: #2b2b2b;
+
+  --gallery-toggle-bg: #000000;
+  --gallery-toggle-text: #ffffff;
+}
+
+/* Dark / gallery mode */
+body.dark-mode {
+  --bg-color: #4c3f77;            /* ミッドナイトパープル */
+  --text-color: #f3ecff;          /* ラベンダーの白 */
+  --muted-text: #d5cfe7;
+  --card-bg: #3a315a;
+  --card-border: rgba(0, 0, 0, 0.4);
+  --shadow-soft: 0 20px 40px rgba(0, 0, 0, 0.55);
+
+  --pill-bg: transparent;
+  --pill-text: #f3ecff;
+  --pill-active-bg: #f3ecff;
+  --pill-active-text: #3a315a;
+
+  --status-prep-bg: rgba(255, 255, 255, 0.18);
+  --status-prep-text: #f3ecff;
+  --status-exhibit-bg: #f4c78d;   /* ライトが点いた感じの金色 */
+  --status-exhibit-text: #3a315a;
+
+  --footer-text: #f3ecff;
+
+  --gallery-toggle-bg: #f3ecff;
+  --gallery-toggle-text: #3a315a;
+}
+
+/* ---------- Global ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
-  background-color: #f5efe4; /* クリーム */
-  color: #3a3a3a; /* 柔らかいテキスト色 */
-  transition: background 0.8s ease;
 }
 
-body.dark-mode {
-  background-color: #1b1b1b;
-  color: #ddd;
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue",
+    "Yu Gothic", "游ゴシック体", "YuGothic", "Hiragino Kaku Gothic ProN",
+    Meiryo, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  transition:
+    background-color 0.6s ease,
+    color 0.6s ease;
 }
 
-/* ======================================
-   ヘッダー
-====================================== */
+/* ---------- Layout ---------- */
+
+.page {
+  min-height: 100vh;
+  padding: 24px 16px 32px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* ---------- Header ---------- */
+
 header {
-  text-align: left;
-  padding: 20px;
-  font-size: 26px;
-  font-weight: 700;
-  color: #2d2d2d; /* Adobeポートフォリオと同じ */
-}
-
-/* ======================================
-   フィルタータグ
-====================================== */
-.filters {
   display: flex;
-  gap: 10px;
-  padding: 10px 20px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
 }
 
-.filter-btn {
-  padding: 8px 18px;
-  border-radius: 30px;
-  border: 2px solid #7a3e2a22;
-  background: #ffffffaa;
+.site-title {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.site-title span {
+  font-weight: 400;
+}
+
+.header-right {
   font-size: 14px;
+  color: var(--muted-text);
+}
+
+/* ---------- Filter pills ---------- */
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.filter-button {
+  border-radius: 999px;
+  padding: 8px 18px;
+  border: 1px solid transparent;
+  font-size: 15px;
+  background-color: var(--pill-bg);
+  color: var(--pill-text);
   cursor: pointer;
-  transition: 0.3s;
-  color: #7a3e2a;
+  outline: none;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
 }
 
-.filter-btn.active {
-  background: #7a3e2a;
-  color: white;
-  border-color: #7a3e2a;
+.filter-button:hover {
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.10);
 }
 
-/* ======================================
-   ギャラリーカード
-====================================== */
-.gallery {
+.filter-button.is-active {
+  background-color: var(--pill-active-bg);
+  color: var(--pill-active-text);
+  border-color: transparent;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+}
+
+/* ---------- Catalog grid ---------- */
+
+.catalog-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 20px;
-  padding: 20px;
 }
+
+@media (min-width: 640px) {
+  .catalog-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ---------- Card ---------- */
 
 .card {
-  background: #e8e1d7aa;
-  border-radius: 18px;
+  background-color: var(--card-bg);
+  border-radius: 22px;
   overflow: hidden;
-  padding-bottom: 20px;
-  transition: 0.4s;
+  border: 1px solid var(--card-border);
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background-color 0.4s ease,
+    border-color 0.4s ease;
 }
 
-.dark-mode .card {
-  background: #2a2a2a;
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.18);
 }
 
-.card img {
-  width: 100%;
+.card-image-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-image-wrapper::before {
+  content: "";
   display: block;
-  border-radius: 12px 12px 0 0;
+  padding-top: 130%; /* 縦長の絵に合わせた比率 */
 }
 
-.card h2 {
-  font-size: 18px;
-  margin: 10px 14px 4px;
-  color: #2d2d2d;
+.card-image-wrapper img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
-.card p {
-  margin: 0 14px 10px;
-  font-size: 13px;
-  color: #555;
+/* ふんわりグラデーションの覆い（ライトON/OFFで雰囲気変える用） */
+.card-image-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+      circle at 20% 0%,
+      rgba(255, 255, 255, 0.3),
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at 100% 100%,
+      rgba(255, 255, 255, 0.18),
+      transparent 55%
+    );
+  mix-blend-mode: soft-light;
+  opacity: 0.9;
+  transition: opacity 0.5s ease;
 }
 
-/* ======================================
-   バッジ
-====================================== */
-.badge {
-  display: inline-block;
-  margin-left: 14px;
-  padding: 5px 12px;
-  border-radius: 8px;
-  font-size: 12px;
-  color: white;
+/* Lights Off で少し強めの陰影 */
+body.dark-mode .card-image-overlay {
+  opacity: 0.35;
 }
 
-.prep { background: #6a6a6a; }
-.live { background: #7a3e2a; }
+.card-content {
+  padding: 16px 18px 18px;
+}
 
-/* ======================================
-   ライト切替ボタン
-====================================== */
-.light-btn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  padding: 12px 18px;
-  border-radius: 30px;
-  border: none;
-  background: #7a3e2a;
-  color: #fff;
+/* ---------- Card texts ---------- */
+
+.card-eyebrow {
   font-size: 14px;
-  cursor: pointer;
-  z-index: 999;
-  transition: 0.4s;
+  color: var(--muted-text);
+  margin-bottom: 4px;
 }
 
-.dark-mode .light-btn {
-  background: #ffffff;
-  color: #7a3e2a;
+.card-title {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin: 0 0 6px;
 }
 
-/* ======================================
-   フッター
-====================================== */
+.card-meta {
+  font-size: 14px;
+  color: var(--muted-text);
+  margin-bottom: 12px;
+}
+
+/* ---------- Status badges ---------- */
+
+.status-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-indent: 0.12em;
+  font-weight: 500;
+}
+
+.status-prep {
+  background-color: var(--status-prep-bg);
+  color: var(--status-prep-text);
+}
+
+.status-exhibit {
+  background-color: var(--status-exhibit-bg);
+  color: var(--status-exhibit-text);
+}
+
+/* ---------- Footer ---------- */
+
 footer {
-  text-align: center;
-  padding: 20px;
-  opacity: 0.7;
-  color: #3a3a3a;
+  margin-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: var(--footer-text);
+}
+
+/* ---------- Gallery mode toggle ---------- */
+
+.gallery-toggle {
+  border-radius: 999px;
+  padding: 10px 20px;
+  border: none;
+  background-color: var(--gallery-toggle-bg);
+  color: var(--gallery-toggle-text);
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-indent: 0.08em;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.15s ease;
+}
+
+.gallery-toggle:hover {
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+  transform: translateY(-1px);
+}
+
+.gallery-toggle:active {
+  transform: translateY(0);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
+}
+
+/* ---------- Lightbox (full screen view) ---------- */
+
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.86);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.lightbox-overlay.is-open {
+  display: flex;
+}
+
+.lightbox-inner {
+  max-width: calc(100vw - 40px);
+  max-height: calc(100vh - 80px);
+}
+
+.lightbox-inner img {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+.lightbox-close {
+  position: fixed;
+  top: 16px;
+  right: 18px;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #222;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- Utilities ---------- */
+
+.hidden {
+  display: none !important;
 }
