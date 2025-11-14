@@ -1,51 +1,118 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>epis design – Gallery</title>
-  <link rel="stylesheet" href="styles.css?v=1">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <title>epis design | Answer catalog</title>
+    <link rel="stylesheet" href="styles.css?v=1" />
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <div class="site-title">epis design</div>
+        <div class="header-right">Answer series / catalog view</div>
+      </header>
 
-<!-- ライトモード切り替えボタン -->
-<button id="light-toggle" class="light-btn">Lights Off</button>
+      <!-- Filter buttons -->
+      <nav class="filter-bar">
+        <button class="filter-button is-active" data-filter="all">All</button>
+        <button class="filter-button" data-filter="apple">Apple</button>
+        <button class="filter-button" data-filter="cherry">Cherry</button>
+        <button class="filter-button" data-filter="limited">Limited</button>
+      </nav>
 
-<header>
-  <h1>epis design</h1>
-</header>
+      <!-- Catalog grid -->
+      <main class="catalog-grid" aria-label="Answer series catalog">
+        <!-- Apple of Promise -->
+        <article
+          class="card"
+          data-category="apple limited"
+          aria-label="Apple of Promise"
+        >
+          <!-- 画像クリックでライトボックス -->
+          <button
+            class="card-image-button js-lightbox-trigger"
+            data-full="../images/Answer1.webp"
+            aria-label="Apple of Promise を拡大表示"
+          >
+            <div class="card-image-wrapper">
+              <img
+                src="../images/Answer1.webp"
+                alt="Apple of Promise / 静かな答えは、はじまりの赤。"
+              />
+              <div class="card-image-overlay"></div>
+            </div>
+          </button>
 
-<section class="filters">
-  <button class="filter-btn active" data-filter="all">All</button>
-  <button class="filter-btn" data-filter="apple">Apple</button>
-  <button class="filter-btn" data-filter="cherry">Cherry</button>
-  <button class="filter-btn" data-filter="limited">Limited</button>
-</section>
+          <div class="card-content">
+            <div class="card-eyebrow">Apple</div>
+            <h2 class="card-title">Apple of Promise</h2>
+            <div class="card-meta">Graphic, Photoshop</div>
 
-<section class="gallery">
+            <div class="status-row">
+              <span class="status-badge status-prep">準備中</span>
+            </div>
+          </div>
+        </article>
 
-  <!-- Apple of Promise -->
-  <div class="card" data-category="apple">
-    <img src="../images/Answer1.webp" alt="Apple of Promise">
-    <h2>Apple of Promise</h2>
-    <p>Graphic, Photoshop</p>
-    <span class="badge prep">準備中</span>
-  </div>
+        <!-- Cherry of Memory -->
+        <article
+          class="card"
+          data-category="cherry limited"
+          aria-label="Cherry of Memory"
+        >
+          <button
+            class="card-image-button js-lightbox-trigger"
+            data-full="../images/Answer2.webp"
+            aria-label="Cherry of Memory を拡大表示"
+          >
+            <div class="card-image-wrapper">
+              <img
+                src="../images/Answer2.webp"
+                alt="Cherry of Memory / 甘く短い余韻、唇に残る記憶。"
+              />
+              <div class="card-image-overlay"></div>
+            </div>
+          </button>
 
-  <!-- Cherry of Memory -->
-  <div class="card" data-category="cherry">
-    <img src="../images/Answer2.webp" alt="Cherry of Memory">
-    <h2>Cherry of Memory</h2>
-    <p>Graphic, Photoshop</p>
-    <span class="badge live">展示中</span>
-  </div>
+          <div class="card-content">
+            <div class="card-eyebrow">Cherry</div>
+            <h2 class="card-title">Cherry of Memory</h2>
+            <div class="card-meta">Graphic, Photoshop</div>
 
-</section>
+            <div class="status-row">
+              <span class="status-badge status-exhibit">展示中</span>
+            </div>
+          </div>
+        </article>
+      </main>
 
-<footer>
-  <p>© epis atelier</p>
-</footer>
+      <footer>
+        <div>© epis atelier</div>
+        <button id="galleryToggle" class="gallery-toggle" type="button">
+          Lights Off
+        </button>
+      </footer>
+    </div>
 
-<script src="main.js?v=1"></script>
-</body>
+    <!-- Lightbox -->
+    <div class="lightbox-overlay" id="lightbox" aria-hidden="true">
+      <div class="lightbox-inner">
+        <img src="" alt="" id="lightbox-image" />
+      </div>
+      <button
+        class="lightbox-close"
+        id="lightbox-close"
+        type="button"
+        aria-label="閉じる"
+      >
+        ×
+      </button>
+    </div>
+
+    <script src="main.js?v=1"></script>
+  </body>
 </html>
