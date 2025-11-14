@@ -2,117 +2,90 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1"
-    />
-    <title>epis design | Answer catalog</title>
-    <link rel="stylesheet" href="styles.css?v=1" />
+    <title>epis design – Answer series catalog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="page">
-      <header>
-        <div class="site-title">epis design</div>
-        <div class="header-right">Answer series / catalog view</div>
-      </header>
+    <header class="site-header">
+      <div class="site-title">epis design</div>
+      <div class="site-subtitle">Answer series / catalog view</div>
+    </header>
 
-      <!-- Filter buttons -->
-      <nav class="filter-bar">
-        <button class="filter-button is-active" data-filter="all">All</button>
-        <button class="filter-button" data-filter="apple">Apple</button>
-        <button class="filter-button" data-filter="cherry">Cherry</button>
-        <button class="filter-button" data-filter="limited">Limited</button>
-      </nav>
+    <section class="filter-bar" aria-label="カテゴリフィルタ">
+      <button class="filter-button is-active" data-filter="all">All</button>
+      <button class="filter-button" data-filter="apple">Apple</button>
+      <button class="filter-button" data-filter="cherry">Cherry</button>
+      <button class="filter-button" data-filter="limited">Limited</button>
+    </section>
 
-      <!-- Catalog grid -->
-      <main class="catalog-grid" aria-label="Answer series catalog">
-        <!-- Apple of Promise -->
-        <article
-          class="card"
-          data-category="apple limited"
-          aria-label="Apple of Promise"
+    <main class="catalog-grid">
+      <!-- Apple -->
+      <article class="card art-card" data-category="apple">
+        <button
+          class="card-image-button"
+          type="button"
+          data-full="../images/Answer1.webp"
         >
-          <!-- 画像クリックでライトボックス -->
-          <button
-            class="card-image-button js-lightbox-trigger"
-            data-full="../images/Answer1.webp"
-            aria-label="Apple of Promise を拡大表示"
-          >
-            <div class="card-image-wrapper">
-              <img
-                src="../images/Answer1.webp"
-                alt="Apple of Promise / 静かな答えは、はじまりの赤。"
-              />
-              <div class="card-image-overlay"></div>
-            </div>
-          </button>
-
-          <div class="card-content">
-            <div class="card-eyebrow">Apple</div>
-            <h2 class="card-title">Apple of Promise</h2>
-            <div class="card-meta">Graphic, Photoshop</div>
-
-            <div class="status-row">
-              <span class="status-badge status-prep">準備中</span>
-            </div>
+          <div class="card-image-wrapper">
+            <img
+              src="../images/Answer1.webp"
+              alt="Apple of Promise artwork"
+            />
           </div>
-        </article>
-
-        <!-- Cherry of Memory -->
-        <article
-          class="card"
-          data-category="cherry limited"
-          aria-label="Cherry of Memory"
-        >
-          <button
-            class="card-image-button js-lightbox-trigger"
-            data-full="../images/Answer2.webp"
-            aria-label="Cherry of Memory を拡大表示"
-          >
-            <div class="card-image-wrapper">
-              <img
-                src="../images/Answer2.webp"
-                alt="Cherry of Memory / 甘く短い余韻、唇に残る記憶。"
-              />
-              <div class="card-image-overlay"></div>
-            </div>
-          </button>
-
-          <div class="card-content">
-            <div class="card-eyebrow">Cherry</div>
-            <h2 class="card-title">Cherry of Memory</h2>
-            <div class="card-meta">Graphic, Photoshop</div>
-
-            <div class="status-row">
-              <span class="status-badge status-exhibit">展示中</span>
-            </div>
-          </div>
-        </article>
-      </main>
-
-      <footer>
-        <div>© epis atelier</div>
-        <button id="galleryToggle" class="gallery-toggle" type="button">
-          Lights Off
         </button>
-      </footer>
-    </div>
+        <div class="card-content">
+          <div class="card-eyebrow">Apple</div>
+          <h2 class="card-title">Apple of Promise</h2>
+          <div class="card-meta">Graphic, Photoshop</div>
+          <div class="status-row">
+            <span class="status-badge status-prep">準備中</span>
+          </div>
+        </div>
+      </article>
 
-    <!-- Lightbox -->
-    <div class="lightbox-overlay" id="lightbox" aria-hidden="true">
-      <div class="lightbox-inner">
-        <img src="" alt="" id="lightbox-image" />
-      </div>
-      <button
-        class="lightbox-close"
-        id="lightbox-close"
-        type="button"
-        aria-label="閉じる"
-      >
-        ×
+      <!-- Cherry -->
+      <article class="card art-card" data-category="cherry">
+        <button
+          class="card-image-button"
+          type="button"
+          data-full="../images/Answer2.webp"
+        >
+          <div class="card-image-wrapper">
+            <img
+              src="../images/Answer2.webp"
+              alt="Cherry of Memory artwork"
+            />
+          </div>
+        </button>
+        <div class="card-content">
+          <div class="card-eyebrow">Cherry</div>
+          <h2 class="card-title">Cherry of Memory</h2>
+          <div class="card-meta">Graphic, Photoshop</div>
+          <div class="status-row">
+            <span class="status-badge status-exhibit">展示中</span>
+          </div>
+        </div>
+      </article>
+    </main>
+
+    <footer>
+      <div>© epis atelier</div>
+      <button id="lightsToggle" class="gallery-toggle" type="button">
+        Lights Off
       </button>
+    </footer>
+
+    <!-- ライトボックス -->
+    <div class="lightbox-overlay" id="lightbox">
+      <div class="lightbox-inner">
+        <img id="lightboxImage" src="" alt="" />
+        <button id="lightboxClose" class="lightbox-close" type="button">
+          &times;
+        </button>
+      </div>
     </div>
 
-    <script src="main.js?v=1"></script>
+    <script src="main.js" defer></script>
   </body>
 </html>
