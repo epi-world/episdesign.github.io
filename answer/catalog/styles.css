@@ -7,12 +7,23 @@
   box-sizing: border-box;
 }
 
+:root {
+  /* brand-ish colours */
+  --epi-bordeaux: #4f2022;
+  --epi-cream: #f6ece1;
+  --epi-card: #ead8cc;
+  --epi-card-dark: #292020;
+  --epi-text-main: #3f2a2a;
+  --epi-text-light: #fdf5ef;
+  --epi-grey: #a18f84;
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-  background-color: #f4ede1; /* 美術館の壁色 */
-  color: #3b302c; /* 深めブラウン（ロゴ系） */
+  background-color: var(--epi-cream); /* 明るいギャラリー */
+  color: var(--epi-text-main);
   transition: background-color 0.4s ease, color 0.4s ease;
 }
 
@@ -20,9 +31,10 @@ body {
   min-height: 100vh;
 }
 
+/* Lights On = 暗い展示モード */
 .dark-mode {
-  background-color: #1c1716;
-  color: #f5eee6;
+  background-color: #151010;
+  color: var(--epi-text-light);
 }
 
 /* -----------------------------------------
@@ -39,11 +51,16 @@ body {
   font-size: 28px;
   font-weight: 700;
   letter-spacing: 0.02em;
+  color: var(--epi-bordeaux);
+}
+
+.dark-mode .site-title {
+  color: var(--epi-text-light);
 }
 
 .header-right {
   font-size: 13px;
-  opacity: 0.7;
+  opacity: 0.75;
 }
 
 /* -----------------------------------------
@@ -60,15 +77,15 @@ body {
   border-radius: 999px;
   border: none;
   background: #ffffff;
-  color: #3b302c;
+  color: var(--epi-text-main);
   font-size: 14px;
   cursor: pointer;
-  box-shadow: 0 0 0 1px #d7cec5 inset;
+  box-shadow: 0 0 0 1px #ddcec4 inset;
 }
 
 .filter-button.is-active {
-  background: #000000;
-  color: #ffffff;
+  background: var(--epi-bordeaux);
+  color: var(--epi-text-light);
 }
 
 /* -----------------------------------------
@@ -87,10 +104,10 @@ body {
 ----------------------------------------- */
 .card {
   width: min(340px, 100%);
-  background: #e4d7c9;
+  background: var(--epi-card);
   border-radius: 24px;
   overflow: hidden;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
   transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s;
 }
 
@@ -100,11 +117,11 @@ body {
 
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
 }
 
 .dark-mode .card {
-  background: #2a2521;
+  background: var(--epi-card-dark);
 }
 
 /* -----------------------------------------
@@ -135,12 +152,14 @@ body {
   transition: transform 0.5s ease, filter 0.4s ease;
 }
 
+/* Lights Off = 明るいまま */
 .card:hover .card-image-wrapper img {
   transform: scale(1.05);
 }
 
+/* Lights On = 暗く＆コントラスト少しUP */
 .dark-mode .card-image-wrapper img {
-  filter: brightness(0.7) contrast(1.05);
+  filter: brightness(0.78) contrast(1.03);
 }
 
 /* -----------------------------------------
@@ -152,19 +171,28 @@ body {
 
 .card-eyebrow {
   font-size: 13px;
-  opacity: 0.7;
-  margin-bottom: 4px;
+  opacity: 0.8;
+  color: var(--epi-grey);
+}
+
+.dark-mode .card-eyebrow {
+  color: #d4c4bb;
 }
 
 .card-title {
   font-size: 20px;
   font-weight: 700;
-  margin: 0 0 6px;
+  margin: 4px 0 6px;
+  color: var(--epi-bordeaux);
+}
+
+.dark-mode .card-title {
+  color: var(--epi-text-light);
 }
 
 .card-meta {
   font-size: 13px;
-  opacity: 0.75;
+  opacity: 0.85;
 }
 
 .status-row {
@@ -180,14 +208,16 @@ body {
   letter-spacing: 0.03em;
 }
 
+/* 準備中：少しくすんだボルドーグレー */
 .status-prep {
-  background: #645c58;
-  color: #ffffff;
+  background: #8e6d6b;
+  color: var(--epi-text-light);
 }
 
+/* 展示中：ロゴに近いボルドー */
 .status-exhibit {
-  background: #0066ff;
-  color: #ffffff;
+  background: var(--epi-bordeaux);
+  color: var(--epi-text-light);
 }
 
 /* -----------------------------------------
@@ -197,23 +227,24 @@ footer {
   padding: 18px 16px 32px;
   text-align: center;
   font-size: 13px;
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
 .gallery-toggle {
   margin-top: 14px;
-  background: #000000;
-  color: #ffffff;
-  border-radius: 20px;
+  background: #ffffff;
+  color: var(--epi-bordeaux);
+  border-radius: 999px;
   padding: 9px 22px;
   font-size: 13px;
-  border: none;
+  border: 1px solid #d9cbc1;
   cursor: pointer;
 }
 
 .dark-mode .gallery-toggle {
-  background: #ffffff;
-  color: #000000;
+  background: var(--epi-bordeaux);
+  color: var(--epi-text-light);
+  border-color: var(--epi-bordeaux);
 }
 
 /* -----------------------------------------
@@ -222,7 +253,7 @@ footer {
 .lightbox-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(0, 0, 0, 0.9);
   display: none;
   justify-content: center;
   align-items: center;
@@ -238,7 +269,7 @@ footer {
   max-width: 100%;
   max-height: 100%;
   border-radius: 16px;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
 }
 
 .lightbox-close {
