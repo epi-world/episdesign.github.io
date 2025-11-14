@@ -1,91 +1,85 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <title>epis design – Answer series catalog</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
+<head>
+  <meta charset="UTF-8" />
+  <title>epis design – Answer series catalog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css?v=13" />
+</head>
+<body>
+  <div class="page">
     <header class="site-header">
       <div class="site-title">epis design</div>
-      <div class="site-subtitle">Answer series / catalog view</div>
+      <div class="header-right">Answer series / catalog view</div>
     </header>
 
-    <section class="filter-bar" aria-label="カテゴリフィルタ">
+    <section class="filter-bar">
       <button class="filter-button is-active" data-filter="all">All</button>
       <button class="filter-button" data-filter="apple">Apple</button>
       <button class="filter-button" data-filter="cherry">Cherry</button>
       <button class="filter-button" data-filter="limited">Limited</button>
     </section>
 
-    <main class="catalog-grid">
-      <!-- Apple -->
-      <article class="card art-card" data-category="apple">
-        <button
-          class="card-image-button"
-          type="button"
-          data-full="../images/Answer1.webp"
-        >
-          <div class="card-image-wrapper">
-            <img
-              src="../images/Answer1.webp"
-              alt="Apple of Promise artwork"
-            />
+    <main>
+      <section class="catalog-grid">
+        <!-- Apple card -->
+        <article class="card" data-category="apple">
+          <button
+            class="card-image-button"
+            data-image="../images/Answer1.webp"
+            aria-label="Apple of Promise"
+          >
+            <div class="card-image-wrapper">
+              <img src="../images/Answer1.webp" alt="Apple of Promise" />
+            </div>
+          </button>
+          <div class="card-content">
+            <div class="card-eyebrow">Apple</div>
+            <h2 class="card-title">Apple of Promise</h2>
+            <div class="card-meta">Graphic, Photoshop</div>
+            <div class="status-row">
+              <span class="status-badge status-prep">準備中</span>
+            </div>
           </div>
-        </button>
-        <div class="card-content">
-          <div class="card-eyebrow">Apple</div>
-          <h2 class="card-title">Apple of Promise</h2>
-          <div class="card-meta">Graphic, Photoshop</div>
-          <div class="status-row">
-            <span class="status-badge status-prep">準備中</span>
-          </div>
-        </div>
-      </article>
+        </article>
 
-      <!-- Cherry -->
-      <article class="card art-card" data-category="cherry">
-        <button
-          class="card-image-button"
-          type="button"
-          data-full="../images/Answer2.webp"
-        >
-          <div class="card-image-wrapper">
-            <img
-              src="../images/Answer2.webp"
-              alt="Cherry of Memory artwork"
-            />
+        <!-- Cherry card -->
+        <article class="card" data-category="cherry limited">
+          <button
+            class="card-image-button"
+            data-image="../images/Answer2.webp"
+            aria-label="Cherry of Memory"
+          >
+            <div class="card-image-wrapper">
+              <img src="../images/Answer2.webp" alt="Cherry of Memory" />
+            </div>
+          </button>
+          <div class="card-content">
+            <div class="card-eyebrow">Cherry</div>
+            <h2 class="card-title">Cherry of Memory</h2>
+            <div class="card-meta">Graphic, Photoshop</div>
+            <div class="status-row">
+              <span class="status-badge status-exhibit">展示中</span>
+            </div>
           </div>
-        </button>
-        <div class="card-content">
-          <div class="card-eyebrow">Cherry</div>
-          <h2 class="card-title">Cherry of Memory</h2>
-          <div class="card-meta">Graphic, Photoshop</div>
-          <div class="status-row">
-            <span class="status-badge status-exhibit">展示中</span>
-          </div>
-        </div>
-      </article>
+        </article>
+      </section>
     </main>
 
     <footer>
       <div>© epis atelier</div>
-      <button id="lightsToggle" class="gallery-toggle" type="button">
-        Lights Off
-      </button>
+      <button class="gallery-toggle" type="button">Lights Off</button>
     </footer>
+  </div>
 
-    <!-- ライトボックス -->
-    <div class="lightbox-overlay" id="lightbox">
-      <div class="lightbox-inner">
-        <img id="lightboxImage" src="" alt="" />
-        <button id="lightboxClose" class="lightbox-close" type="button">
-          &times;
-        </button>
-      </div>
+  <!-- Lightbox -->
+  <div class="lightbox-overlay" id="lightbox">
+    <button class="lightbox-close" type="button" aria-label="Close">&times;</button>
+    <div class="lightbox-inner">
+      <img id="lightbox-image" src="" alt="" />
     </div>
+  </div>
 
-    <script src="main.js" defer></script>
-  </body>
+  <script src="main.js?v=13" defer></script>
+</body>
 </html>
