@@ -1,82 +1,35 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const pills = document.querySelectorAll('.pill');
-  const cards = Array.from(document.querySelectorAll('.card'));
-  const grid  = document.querySelector('.grid');
+/* ===============================
+   1. フィルター機能
+=============================== */
+const filterButtons = document.querySelectorAll('.filter-btn');
+const cards = document.querySelectorAll('.card');
 
-  // 初期: URLの ?tag=xxx を反映
-  const params = new URLSearchParams(location.search);
-  const initial = params.get('tag') || '*';
-  activate(initial);
+filterButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterButtons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
 
-  pills.forEach(p => {
-    p.addEventListener('click', () => {
-      const tag = p.dataset.filter;
-      const sp = new URLSearchParams(location.search);
-      tag === '*' ? sp.delete('tag') : sp.set('tag', tag);
-      history.replaceState({}, '', `${location.pathname}${sp.toString() ? '?' + sp.toString() : ''}`);
-      activate(tag);
-    });
-  });
+    const category = btn.dataset.filter;
 
-  function activate(tag){
-    pills.forEach(x => x.classList.toggle('is-active', x.dataset.filter === tag));
     cards.forEach(card => {
-      const tags = (card.dataset.tags || '').split(/\s+/);
-      const show = (tag === '*') || tags.includes(tag);
-      toggleCard(card, show);
-    });
-    grid.scrollIntoView({ behavior:'smooth', block:'start' });
-  }
-
-  function toggleCard(el, show){
-    if (show) {
-      el.hidden = false;
-      requestAnimationFrame(() => {
-        el.style.opacity = '1';
-        el.style.transform = 'scale(1)';
-        el.style.visibility = 'visible';
-      });
-    } else {
-      el.style.opacity = '0';
-      el.style.transform = 'scale(.98)';
-      el.style.visibility = 'hidden';
-      setTimeout(() => { el.hidden = true; }, 180);
-    }
-  }
-
-  // ライトボックス
-  const dlg = document.getElementById('lightbox');
-  const lbImg = dlg.querySelector('.lb-img');
-  const lbTtl = dlg.querySelector('.lb-ttl');
-  const lbSub = dlg.querySelector('.lb-sub');
-  const btnClose = dlg.querySelector('.close');
-
-  cards.forEach(card => {
-    card.addEventListener('click', () => openLB(card));
-    card.addEventListener('keypress', e => {
-      if (e.key === 'Enter') openLB(card);
+      if (category === "all" || card.dataset.category === category) {
+        card.style.display = "block";
+      } else {
+        card.style.display = "none";
+      }
     });
   });
+});
 
-  function openLB(card){
-    const img = card.querySelector('img');
-    lbImg.src = img.currentSrc || img.src;
-    lbImg.alt = img.alt || '';
-    lbTtl.textContent = card.querySelector('.ttl')?.textContent || '';
-    lbSub.textContent = card.querySelector('.sub')?.textContent || '';
-    dlg.showModal();
-  }
+/* ===============================
+   2. Lights On / Off
+=============================== */
+const lightBtn = document.getElementById("light-toggle");
 
-  btnClose.addEventListener('click', () => dlg.close());
-  dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
-
-  // ギャラリーモード（ライトON/OFF）
-  const modeBtn = document.getElementById('modeToggle');
-  if (modeBtn){
-    modeBtn.addEventListener('click', () => {
-      const off = document.body.classList.toggle('lights-off');
-      modeBtn.setAttribute('aria-pressed', off ? 'true' : 'false');
-      modeBtn.textContent = off ? 'ライトON' : 'ギャラリーモード';
-    });
-  }
+lightBtn.addEventListener("click", () => {
+  document.body.classList.toggle("dark-mode");
+  lightBtn.textContent =
+    document.body.classList.contains("dark-mode")
+      ? "Lights On"
+      : "Lights Off";
 });
