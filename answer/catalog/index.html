@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Answer Catalog | epis design</title>
-  <meta name="description" content="Answerシリーズの全作品。タブで切替、スムーズなグリッド表示。">
+  <meta name="description" content="Answerシリーズの小さなオンラインカタログ。作品ごとに閲覧・フィルタができます。">
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
@@ -14,7 +14,7 @@
   </header>
 
   <main>
-    <!-- Sticky フィルター -->
+    <!-- フィルター -->
     <section id="filters" class="filters" aria-label="絞り込み">
       <button class="pill is-active" data-filter="*">All</button>
       <button class="pill" data-filter="apple">Apple</button>
@@ -49,7 +49,7 @@
       </article>
     </section>
 
-    <!-- Lightbox（1つだけ。open属性は付けない） -->
+    <!-- ライトボックス（拡大表示） -->
     <dialog class="lightbox" id="lightbox">
       <button class="close" aria-label="閉じる">×</button>
       <img class="lb-img" alt="" />
@@ -64,8 +64,11 @@
     </footer>
   </main>
 
-  <!-- ギャラリーモードボタン（任意） -->
+  <!-- ギャラリーモード（ライトON/OFF）ボタン -->
   <button id="modeToggle" class="mode-btn" aria-pressed="false">ギャラリーモード</button>
+
+  <!-- ライトON/OFF用オーバーレイ -->
+  <div id="light-overlay"></div>
 
   <script defer src="./main.js"></script>
 </body>
