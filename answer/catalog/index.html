@@ -1,74 +1,51 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Answer Catalog | epis design</title>
-  <meta name="description" content="Answerシリーズの小さなオンラインカタログ。作品ごとに閲覧・フィルタができます。">
-  <link rel="stylesheet" href="./styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>epis design – Gallery</title>
+  <link rel="stylesheet" href="styles.css?v=1">
 </head>
 <body>
-  <header class="siteHead">
-    <div class="brand"><a href="../">epis design</a></div>
-    <nav class="nav"><a href="#filters">All Works</a></nav>
-  </header>
 
-  <main>
-    <!-- フィルター -->
-    <section id="filters" class="filters" aria-label="絞り込み">
-      <button class="pill is-active" data-filter="*">All</button>
-      <button class="pill" data-filter="apple">Apple</button>
-      <button class="pill" data-filter="cherry">Cherry</button>
-      <button class="pill" data-filter="limited">Limited</button>
-    </section>
+<!-- ライトモード切り替えボタン -->
+<button id="light-toggle" class="light-btn">Lights Off</button>
 
-    <!-- グリッド -->
-    <section class="grid" aria-live="polite">
+<header>
+  <h1>epis design</h1>
+</header>
 
-      <!-- Apple of Promise -->
-      <article class="card" data-tags="apple limited" tabindex="0">
-        <figure class="thumb">
-          <img src="../images/Answer1.webp" alt="Answer: Apple of Promise" loading="lazy" />
-        </figure>
-        <header class="meta">
-          <h3 class="ttl">Apple of Promise</h3>
-          <p class="sub">Graphic, Photoshop</p>
-        </header>
-        <div class="badge">準備中</div>
-      </article>
+<section class="filters">
+  <button class="filter-btn active" data-filter="all">All</button>
+  <button class="filter-btn" data-filter="apple">Apple</button>
+  <button class="filter-btn" data-filter="cherry">Cherry</button>
+  <button class="filter-btn" data-filter="limited">Limited</button>
+</section>
 
-      <!-- Cherry of Memory -->
-      <article class="card" data-tags="cherry">
-        <figure class="thumb">
-          <img src="../images/Answer2.webp" alt="Answer: Cherry of Memory" loading="lazy" />
-        </figure>
-        <header class="meta">
-          <h3 class="ttl">Cherry of Memory</h3>
-          <p class="sub">Graphic, Photoshop</p>
-        </header>
-        <div class="badge">展示中</div>
-      </article>
+<section class="gallery">
 
-    </section>
+  <!-- Apple -->
+  <div class="card" data-category="apple">
+    <img src="answer/images/Answer1.webp" alt="Apple of Promise">
+    <h2>Apple of Promise</h2>
+    <p>Graphic, Photoshop</p>
+    <span class="badge prep">準備中</span>
+  </div>
 
-    <!-- ライトボックス -->
-    <dialog class="lightbox" id="lightbox">
-      <button class="close" aria-label="閉じる">×</button>
-      <img class="lb-img" alt="" />
-      <div class="lb-cap">
-        <h3 class="lb-ttl"></h3>
-        <p class="lb-sub"></p>
-      </div>
-    </dialog>
+  <!-- Cherry -->
+  <div class="card" data-category="cherry">
+    <img src="answer/images/Answer2.webp" alt="Cherry of Memory">
+    <h2>Cherry of Memory</h2>
+    <p>Graphic, Photoshop</p>
+    <span class="badge live">展示中</span>
+  </div>
 
-    <footer class="foot">
-      <small>© epis atelier</small>
-    </footer>
-  </main>
+</section>
 
-  <button id="modeToggle" class="mode-btn" aria-pressed="false">ギャラリーモード</button>
-  <div id="light-overlay"></div>
+<footer>
+  <p>© epis atelier</p>
+</footer>
 
-  <script defer src="./main.js"></script>
+<script src="main.js?v=1"></script>
 </body>
 </html>
