@@ -22,7 +22,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-  background-color: var(--epi-cream); /* 明るいギャラリー */
+  background-color: var(--epi-cream); /* Lights Off（明るい展示室） */
   color: var(--epi-text-main);
   transition: background-color 0.4s ease, color 0.4s ease;
 }
@@ -70,6 +70,7 @@ body {
   display: flex;
   gap: 10px;
   padding: 10px 16px 18px;
+  flex-wrap: wrap;
 }
 
 .filter-button {
@@ -92,7 +93,7 @@ body {
    Catalog Grid
 ----------------------------------------- */
 .catalog-grid {
-  padding: 0 16px 60px;
+  padding: 0 16px 90px; /* 下に固定ボタンがあるので余白増やす */
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -157,7 +158,7 @@ body {
   transform: scale(1.05);
 }
 
-/* Lights On = 暗く＆コントラスト少しUP */
+/* Lights On = 暗く＆コントラスト少しUP（理想通り：オンで暗い） */
 .dark-mode .card-image-wrapper img {
   filter: brightness(0.78) contrast(1.03);
 }
@@ -221,7 +222,7 @@ body {
 }
 
 /* -----------------------------------------
-   Footer
+   Footer（文字だけ残す。ボタンは固定するので主役じゃない）
 ----------------------------------------- */
 footer {
   padding: 18px 16px 32px;
@@ -230,21 +231,41 @@ footer {
   opacity: 0.9;
 }
 
+/* -----------------------------------------
+   Lights toggle button (Fixed, visible)
+----------------------------------------- */
 .gallery-toggle {
-  margin-top: 14px;
-  background: #ffffff;
+  position: fixed;
+  right: calc(16px + env(safe-area-inset-right));
+  bottom: calc(16px + env(safe-area-inset-bottom));
+  z-index: 1000;
+
+  background: rgba(255, 255, 255, 0.92);
   color: var(--epi-bordeaux);
   border-radius: 999px;
-  padding: 9px 22px;
+  padding: 10px 18px;
   font-size: 13px;
-  border: 1px solid #d9cbc1;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+
+  border: 1px solid rgba(221, 206, 196, 0.9);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+
   cursor: pointer;
 }
 
 .dark-mode .gallery-toggle {
-  background: var(--epi-bordeaux);
+  background: rgba(79, 32, 34, 0.92);
   color: var(--epi-text-light);
-  border-color: var(--epi-bordeaux);
+  border-color: rgba(79, 32, 34, 0.8);
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.35);
+}
+
+/* 押した感 */
+.gallery-toggle:active {
+  transform: translateY(1px);
 }
 
 /* -----------------------------------------
