@@ -235,32 +235,28 @@ footer {
 ----------------------------------------- */
 .gallery-toggle {
   position: fixed;
-  right: calc(14px + env(safe-area-inset-right));
-  top: calc(14px + env(safe-area-inset-top));
-  z-index: 1000;
+  top: 80px; /* ← ヘッダーより下にずらすのがミソ */
+  right: 16px;
+  z-index: 9999; /* ← 勝つ */
 
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.95);
   color: var(--epi-bordeaux);
   border-radius: 999px;
   padding: 10px 16px;
   font-size: 13px;
   font-weight: 700;
-  letter-spacing: 0.02em;
 
   border: 1px solid rgba(221, 206, 196, 0.9);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
 
   cursor: pointer;
 }
 
 .dark-mode .gallery-toggle {
-  background: rgba(79, 32, 34, 0.92);
+  background: rgba(79, 32, 34, 0.95);
   color: var(--epi-text-light);
-  border-color: rgba(79, 32, 34, 0.8);
-  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.35);
 }
+
 
 .gallery-toggle:active {
   transform: translateY(1px);
