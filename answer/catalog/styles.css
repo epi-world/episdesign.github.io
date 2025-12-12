@@ -93,7 +93,7 @@ body {
    Catalog Grid
 ----------------------------------------- */
 .catalog-grid {
-  padding: 0 16px 90px; /* 下に固定ボタンがあるので余白増やす */
+  padding: 0 16px 60px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -153,12 +153,11 @@ body {
   transition: transform 0.5s ease, filter 0.4s ease;
 }
 
-/* Lights Off = 明るいまま */
 .card:hover .card-image-wrapper img {
   transform: scale(1.05);
 }
 
-/* Lights On = 暗く＆コントラスト少しUP（理想通り：オンで暗い） */
+/* Lights On = 暗く＆コントラスト少しUP（オンで暗い） */
 .dark-mode .card-image-wrapper img {
   filter: brightness(0.78) contrast(1.03);
 }
@@ -209,20 +208,20 @@ body {
   letter-spacing: 0.03em;
 }
 
-/* 準備中：少しくすんだボルドーグレー */
+/* 準備中：くすんだボルドーグレー */
 .status-prep {
   background: #8e6d6b;
   color: var(--epi-text-light);
 }
 
-/* 展示中：ロゴに近いボルドー */
+/* 展示中：ボルドー */
 .status-exhibit {
   background: var(--epi-bordeaux);
   color: var(--epi-text-light);
 }
 
 /* -----------------------------------------
-   Footer（文字だけ残す。ボタンは固定するので主役じゃない）
+   Footer（文字だけ）
 ----------------------------------------- */
 footer {
   padding: 18px 16px 32px;
@@ -232,18 +231,18 @@ footer {
 }
 
 /* -----------------------------------------
-   Lights toggle button (Fixed, visible)
+   Lights toggle button (Fixed, TOP-RIGHT)
 ----------------------------------------- */
 .gallery-toggle {
   position: fixed;
-  right: calc(16px + env(safe-area-inset-right));
-  bottom: calc(16px + env(safe-area-inset-bottom));
+  right: calc(14px + env(safe-area-inset-right));
+  top: calc(14px + env(safe-area-inset-top));
   z-index: 1000;
 
   background: rgba(255, 255, 255, 0.92);
   color: var(--epi-bordeaux);
   border-radius: 999px;
-  padding: 10px 18px;
+  padding: 10px 16px;
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.02em;
@@ -263,7 +262,6 @@ footer {
   box-shadow: 0 12px 34px rgba(0, 0, 0, 0.35);
 }
 
-/* 押した感 */
 .gallery-toggle:active {
   transform: translateY(1px);
 }
@@ -295,8 +293,8 @@ footer {
 
 .lightbox-close {
   position: fixed;
-  top: 18px;
-  right: 18px;
+  top: calc(18px + env(safe-area-inset-top));
+  right: calc(18px + env(safe-area-inset-right));
   font-size: 32px;
   background: none;
   border: none;
