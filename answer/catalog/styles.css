@@ -297,3 +297,5 @@ footer {
   color: #ffffff;
   cursor: pointer;
 }
+
+.page-subtitle { display: none; }
